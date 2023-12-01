@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const LaptopSidebar = ({ children }) => {
   const pathname = usePathname();
-  let noSidebar = [];
+  let noSidebar = ["/"];
   return (
     <>
       {noSidebar.includes(pathname) ? (
