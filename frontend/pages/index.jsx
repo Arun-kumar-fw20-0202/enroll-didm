@@ -4,6 +4,7 @@ import JoinMaster from "../components/LandingPage/JoinMaster";
 import TrainingBox from "@/components/LandingPage/TrainingBox";
 import ToolsMastery from "@/components/LandingPage/ToolsMaster";
 import PromoBanner from "@/components/LandingPage/PromoBanner";
+import ScratchCardComponent from "@/components/LandingPage/ScratchCard";
 
 const inter = Inter({ subsets: ["latin"] });
 

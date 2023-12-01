@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    // <LaptopSidebar>
-    <Component {...pageProps} />
-    // </LaptopSidebar>
+    <LaptopSidebar>
+      <Component {...pageProps} />
+    </LaptopSidebar>
   );
 }
