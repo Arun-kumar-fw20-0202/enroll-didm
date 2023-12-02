@@ -1,6 +1,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "../Footer";
 
 const LaptopSidebar = ({ children }) => {
   const pathname = usePathname();
@@ -8,13 +9,17 @@ const LaptopSidebar = ({ children }) => {
   return (
     <>
       {noSidebar.includes(pathname) ? (
-        <div>{children}</div>
+        <div>
+          {children}
+          {/* <Footer /> */}
+        </div>
       ) : (
         <div>
           <Navbar />
           {children}
         </div>
       )}
+      <Footer />
     </>
   );
 };
