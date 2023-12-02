@@ -22,6 +22,7 @@
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.12.0",
     "react-scratchcard": "^1.1.2",
+    "react-responsive": "^9.0.2",
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss-animated": "^1.0.1"
   },

@@ -162,14 +162,16 @@ export const Enroll_form = () => {
       {/* heading  */}
       <Enroll_heading />
       {/* form  */}
-      <form onSubmit={handleSubmit(onSubmit)} className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 mx-28 relative flex flex-col items-center justify-center">
+      <form className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center">
         {/* heading  */}
-        <div className="text-[23px] tracking-[1px] flex gap-2 absolute -top-4 bg-white w-fit mx-20 justify-center px-28">
-          <p>Valid information is required to register.</p>
-          <p className="text-[#b64f4f]">required *</p>
+        <div className="large:text-[23px] medium:text-[20px] small:text-[18px] base:text-[16px] tracking-[1px] flex gap-2 absolute -top-4 bg-white w-fit large:mx-20 medium:mx-15 small:mx-8 base:mx-2 justify-center large:px-20 medium:px-15 small:px-8 base:px-2">
+          <p>
+            Valid information is required to register.
+            <span className="text-[#b64f4f]">required *</span>
+          </p>
         </div>
         {/* inp divs  */}
-        <div className="my-10 w-full flex flex-col gap-4">
+        <div className="my-14 w-full flex flex-col gap-4">
           {/* one  */}
           <div className="mx-10 flex flex-col gap-1">
             <p className="text-[14px]">Candidate Name</p>
