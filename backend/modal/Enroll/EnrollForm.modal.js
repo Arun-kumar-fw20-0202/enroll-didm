@@ -3,10 +3,8 @@ const mongoose = require("mongoose");
 const enrollForm = mongoose.Schema(
   {
     cd_name: { type: String, required: true },
-
     phone_number: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
-
     company: { type: String, required: true },
     category: { type: String, required: true },
     city: { type: String, required: true },
