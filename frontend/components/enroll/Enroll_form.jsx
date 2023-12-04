@@ -10,6 +10,7 @@ import api from "@/pages/api/api";
 import toast from "react-hot-toast";
 import DynamicModal from "../DynamicModal/Modal";
 import generateRandomNumber from "@/core/GenerateDiscount";
+import dynamic from "next/dynamic";
 
 const data = {
   cd_name: "",
@@ -28,6 +29,7 @@ const data = {
   aggree: "",
 };
 export const Enroll_form = () => {
+  const [open, setOpen] = useState();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const {
@@ -37,8 +39,8 @@ export const Enroll_form = () => {
   } = useForm();
 
   const onSubmit = (formdata) => {
-    onOpen();
     // alert("working");
+    onOpen();
     // api
     //   .post("/enroll/create", formdata)
     //   .then((res) => {
@@ -58,7 +60,7 @@ export const Enroll_form = () => {
       <DynamicModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
       <Enroll_heading />
       {/* form  */}
-      <form className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center">
         {/* heading  */}
         <div className="large:text-[23px] medium:text-[20px] small:text-[18px] base:text-[16px] tracking-[1px] flex gap-2 absolute -top-4 bg-white w-fit large:mx-20 medium:mx-15 small:mx-8 base:mx-2 justify-center large:px-20 medium:px-15 small:px-8 base:px-2">
           <p>

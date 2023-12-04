@@ -5,9 +5,8 @@ import ReactConfetti from "react-confetti";
 import ScratchCard from "react-scratchcard";
 
 export default function ScratchCardComponent() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
   const { width, height } = useWindowSize();
+
   const [scratchedText, setScratchedText] = useState("");
   const [numberOfPieces, setnumberOfPieces] = useState(0);
 
