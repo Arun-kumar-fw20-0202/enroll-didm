@@ -9,10 +9,12 @@ import ErrMsg from "@/core/ErrMsg";
 import SelectTag from "@/core/SelectTag";
 import { branchArr, branchType, category, courseType, placementArr, relationArr, trainingMode } from "./EnrollComp/dummy";
 import ScratchCardComponent from "../LandingPage/ScratchCard";
+import useAddFormData from "@/libs/Murations/useAddFormData";
 
 export const Enroll_form = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [formFilled, setFormFilled] = useState(false);
+  const { mutate: addData } = useAddFormData();
 
   const {
     control,
@@ -21,7 +23,7 @@ export const Enroll_form = () => {
   } = useForm();
 
   const onSubmit = (formdata) => {
-    console.log("formdata", formdata);
+    addData(formdata);
   };
 
   return (
