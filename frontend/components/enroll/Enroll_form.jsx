@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Enroll_heading from "./EnrollComp/Enroll_heading";
 import InpBx from "@/core/Inp/InpBx";
 import SelectTag from "@/core/SelectTag";
@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import DynamicModal from "../DynamicModal/Modal";
 import generateRandomNumber from "@/core/GenerateDiscount";
 import dynamic from "next/dynamic";
+import ScratchCardComponent from "../LandingPage/ScratchCard";
 
 const data = {
   cd_name: "",
@@ -29,7 +30,6 @@ const data = {
   aggree: "",
 };
 export const Enroll_form = () => {
-  const [open, setOpen] = useState();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const {
@@ -38,9 +38,10 @@ export const Enroll_form = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (formdata) => {
-    // alert("working");
+  useEffect(() => {
     onOpen();
+  }, []);
+  const onSubmit = (formdata) => {
     // api
     //   .post("/enroll/create", formdata)
     //   .then((res) => {
@@ -57,7 +58,7 @@ export const Enroll_form = () => {
   return (
     <div className="mt-16">
       {/* heading  */}
-      <DynamicModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
+      {/* <DynamicModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} /> */}
       <Enroll_heading />
       {/* form  */}
       <form onSubmit={handleSubmit(onSubmit)} className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center">
@@ -138,20 +139,28 @@ export const Enroll_form = () => {
           </div>
           {/*  */}
         </div>
-        <div className="flex flex-col justify-start bg-full w-full px-10">
-          <p className="text-[28px]">Declaration</p>
-          <p className="text-[14px]">I Shall abide by the academic and administrative rules and regulations of Delhi Institute of Digital Marketing. By filling up this form, I certify that to the best of my knowledge and belief, the information provided in this application form is true and complete.</p>
-        </div>
-        <div className="flex justify-start w-full px-10 my-5">
-          <Checkbox className="" radius="sm" color="danger" classNames={"focus : outline-none"} defaultSelected>
-            By clicking Agree Button, you agree to the Terms and Conditions set out by this site, including our Cookie Use.
-          </Checkbox>
-        </div>
-        {/* btn  */}
-        <div className="flex justify-start w-full px-10">
-          <Button type="submit" variant="bordered" className="text-white bg-[#B52828] rounded-full focus:outline-none border-red-800 font-semibold">
-            Scratch Now
-          </Button>
+
+        <div className="flex p-3">
+          <div className="w-[60%]">
+            <div className="flex flex-col justify-start bg-full w-full px-10">
+              <p className="text-[28px]">Declaration</p>
+              <p className="text-[14px]">I Shall abide by the academic and administrative rules and regulations of Delhi Institute of Digital Marketing. By filling up this form, I certify that to the best of my knowledge and belief, the information provided in this application form is true and complete.</p>
+            </div>
+            <div className="flex justify-start w-full px-10 my-5">
+              <Checkbox className="" radius="sm" color="danger" classNames={"focus : outline-none"} defaultSelected>
+                By clicking Agree Button, you agree to the Terms and Conditions set out by this site, including our Cookie Use.
+              </Checkbox>
+            </div>
+            {/* btn  */}
+            <div className="flex justify-start w-full px-10">
+              <Button type="submit" variant="bordered" className="text-white bg-[#B52828] rounded-full focus:outline-none border-red-800 font-semibold">
+                Scratch Now
+              </Button>
+            </div>
+          </div>
+          <div className="border-2 w-[40%] relative overflow-hidden">
+            <ScratchCardComponent />
+          </div>
         </div>
       </form>
     </div>
