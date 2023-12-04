@@ -26,6 +26,7 @@ const LaptopSidebar = ({ children }) => {
         </>
       )}
       <Footer />
+      {/* {children} */}
     </div>
   );
 };
