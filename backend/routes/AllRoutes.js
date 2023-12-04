@@ -1,7 +1,8 @@
 const express = require("express");
-const { enrollForm } = require("../controller/Enroll/Enroll");
+const enrollRoute = require("./Enroll/EnrollRoute");
+
 const allRoutes = express.Router();
 
-allRoutes.use("/enroll", enrollForm);
+allRoutes.use("/enroll", enrollRoute);
 
 module.exports = allRoutes;

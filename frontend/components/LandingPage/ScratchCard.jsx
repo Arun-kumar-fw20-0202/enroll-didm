@@ -12,7 +12,7 @@ export default function ScratchCardComponent() {
   const [numberOfPieces, setnumberOfPieces] = useState(0);
 
   const handleScratchComplete = () => {
-    setScratchedText("You got 25% Discount");
+    setScratchedText(`You got 25% Discount`);
     setnumberOfPieces(500);
     setTimeout(() => {
       setnumberOfPieces(0);

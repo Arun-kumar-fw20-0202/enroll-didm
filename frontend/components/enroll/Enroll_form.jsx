@@ -9,6 +9,7 @@ import { ErrMsg } from "@/core/ErrMsg";
 import api from "@/pages/api/api";
 import toast from "react-hot-toast";
 import DynamicModal from "../DynamicModal/Modal";
+import generateRandomNumber from "@/core/GenerateDiscount";
 
 const data = {
   cd_name: "",
@@ -36,20 +37,19 @@ export const Enroll_form = () => {
   } = useForm();
 
   const onSubmit = (formdata) => {
+    onOpen();
     // alert("working");
-    api
-      .post("/enroll/create", formdata)
-      .then((res) => {
-        console.log(res);
-        // toast.success(res?.data);
-        onOpen();
-      })
-      .catch((err) => {
-        console.log(err);
-        // if (err?.response?.status == 403) {
-        //   toast.error(err?.response?.data?.msg);
-        // }
-      });
+    // api
+    //   .post("/enroll/create", formdata)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     if (err?.response?.status == 403) {
+    //       toast.error(err?.response?.data?.msg);
+    //     }
+    //   });
   };
 
   return (
