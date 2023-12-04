@@ -2,6 +2,8 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
+import { useMediaQuery } from "react-responsive";
+import MobileNavbar from "./MobileNavbar";
 
 const LaptopSidebar = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -15,7 +17,7 @@ const LaptopSidebar = ({ children }) => {
   return (
     <div>
       {noSidebar.includes(pathname) ? (
-        { children }
+        <div>{children}</div>
       ) : (
         <>
           {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}

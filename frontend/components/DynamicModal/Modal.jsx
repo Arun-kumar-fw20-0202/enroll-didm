@@ -10,9 +10,9 @@ export default function DynamicModal({ isOpen, onOpen, onOpenChange }) {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">coupon</ModalHeader>
-              <ModalBody>
-                <ScratchCardComponent />
-              </ModalBody>
+              {/* <ModalBody> */}
+              <ScratchCardComponent />
+              {/* </ModalBody> */}
               <ModalFooter></ModalFooter>
             </>
           )}

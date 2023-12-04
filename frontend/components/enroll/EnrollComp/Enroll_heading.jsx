@@ -9,8 +9,8 @@ const Enroll_heading = () => {
       </div>
       <div className="flex gap-2 large:text-[17px] medium:text-[15px] small:text-[14px] base:text-[13px] items-center text-center justify-center ">
         <p className="text-gray-700">
-          Join India’s Most Promising Brand in Digital Marketing Course, Lets
-          Your Digital Career Begins Now !!
+          {"Join India’s Most Promising Brand in Digital Marketing Course, Lets"}
+          {"Your Digital Career Begins Now !!"}
         </p>
       </div>
     </div>
