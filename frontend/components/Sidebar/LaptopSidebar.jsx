@@ -2,6 +2,8 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
+import dynamic from "next/dynamic";
+import { useMediaQuery } from "react-responsive";
 
 const LaptopSidebar = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -23,6 +25,7 @@ const LaptopSidebar = ({ children }) => {
         </>
       )}
       <Footer />
+      {/* {children} */}
     </div>
   );
 };

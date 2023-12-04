@@ -10,6 +10,7 @@ import api from "@/pages/api/api";
 import toast from "react-hot-toast";
 import DynamicModal from "../DynamicModal/Modal";
 import generateRandomNumber from "@/core/GenerateDiscount";
+import dynamic from "next/dynamic";
 
 const data = {
   cd_name: "",
