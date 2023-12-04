@@ -165,13 +165,13 @@ export const Enroll_form = () => {
             <p className="text-[14px]">Branch Type</p>
             <Controller
               control={control}
-              name="branchtype"
+              name="batch_type"
               rules={{
                 required: "Branch type is required",
               }}
               render={({ field: { onChange, value } }) => <SelectTag arr={branchType} placeholder="Select branch" onChange={onChange} value={value} />}
             />
-            <ErrMsg err={errors} name="branchtype" />
+            <ErrMsg err={errors} name="batch_type" />
           </div>
           {/*  */}
           <div className="mx-10 flex flex-col gap-1">
