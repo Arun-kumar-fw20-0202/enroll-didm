@@ -19,7 +19,7 @@ const LaptopSidebar = ({ children }) => {
       ) : (
         <>
           {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}
-          {children}
+          <isDesktopOrLaptop>{children}</isDesktopOrLaptop>
         </>
       )}
       <Footer />
@@ -27,6 +27,6 @@ const LaptopSidebar = ({ children }) => {
   );
 };
 
-export default LaptopSidebar;
+// export default LaptopSidebar;
 
-// export default dynamic(() => Promise.resolve(LaptopSidebar), { ssr: false });
+export default dynamic(() => Promise.resolve(LaptopSidebar), { ssr: false });
