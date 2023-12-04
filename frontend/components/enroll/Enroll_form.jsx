@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Enroll_heading from "./EnrollComp/Enroll_heading";
 import InpBx from "@/core/Inp/InpBx";
-import SelectTag from "@/core/SelectTag";
 import { Button, Checkbox } from "@nextui-org/react";
-import { MdOutlinePhone } from "react-icons/md";
 import { Controller, useForm } from "react-hook-form";
 import { ErrMsg } from "@/core/ErrMsg";
+import dynamic from "next/dynamic";
 
 let CategoryArr = [
   {
@@ -248,3 +247,6 @@ export const Enroll_form = () => {
     </div>
   );
 };
+
+
+export default dynamic (()=>Promise.resolve(Enroll_form),{ssr:false})
