@@ -1,11 +1,11 @@
-function generateRandomNumber() {
-  const randomNumber = Math.random();
+function generateDiscount() {
+  const Discount = Math.random();
 
-  const scaledNumber = randomNumber * 15 + 15;
+  const scaledNumber = Discount * 15 + 15;
 
   const finalNumber = Math.floor(scaledNumber);
 
   return finalNumber;
 }
 
-export default generateRandomNumber;
+export default generateDiscount;

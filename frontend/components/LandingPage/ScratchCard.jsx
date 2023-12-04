@@ -1,3 +1,4 @@
+import generateDiscount from "@/core/GenerateDiscount";
 import { useDisclosure } from "@nextui-org/react";
 import { useWindowSize } from "@react-hook/window-size";
 import React, { useRef, useState } from "react";
@@ -11,7 +12,7 @@ export default function ScratchCardComponent() {
   const [numberOfPieces, setnumberOfPieces] = useState(0);
 
   const handleScratchComplete = () => {
-    setScratchedText(`You got 25% Discount`);
+    setScratchedText(`You got ${generateDiscount()}% Discount`);
     setnumberOfPieces(500);
     setTimeout(() => {
       setnumberOfPieces(0);
@@ -20,7 +21,7 @@ export default function ScratchCardComponent() {
 
   const settings = {
     width: 500,
-    height: 500,
+    height: 250, // Set the height to 100% to make it dynamic
     image: "/landing/banenr.jpg",
     finishPercent: 50,
     onComplete: handleScratchComplete,
@@ -40,16 +41,17 @@ export default function ScratchCardComponent() {
   };
 
   return (
-    <div className="h-full w-full overflow-hidden bg-purple-500">
+    <>
       <ReactConfetti numberOfPieces={numberOfPieces} config={config} />
-      {/*  */}
-      <div className=" w-auto flex justify-center items-center overflow-hidden">
-        <ScratchCard {...settings}>
-          <div className="flex items-center justify-center border border-red-500 h-[450px] text-center p-3 ">
-            <h1 className="text-[50px] font-extrabold">{scratchedText}</h1>
-          </div>
-        </ScratchCard>
+      <div className="relative h-full w-full overflow-hidden">
+        <div className="w-full h-full text-center border rounded-md border-gray-500">
+          <ScratchCard className="border boder-black" {...settings}>
+            <div>
+              <h1 className="text-[50px] font-extrabold">{scratchedText}</h1>
+            </div>
+          </ScratchCard>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

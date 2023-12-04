@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Enroll_heading from "./EnrollComp/Enroll_heading";
 import InpBx from "@/core/Inp/InpBx";
 import { Button, Checkbox, useDisclosure } from "@nextui-org/react";
@@ -7,18 +7,10 @@ import DynamicModal from "../DynamicModal/Modal";
 import dynamic from "next/dynamic";
 import ErrMsg from "@/core/ErrMsg";
 import SelectTag from "@/core/SelectTag";
-import {
-  branchArr,
-  branchType,
-  category,
-  courseType,
-  placementArr,
-  relationArr,
-  trainingMode,
-} from "./EnrollComp/dummy";
+import { branchArr, branchType, category, courseType, placementArr, relationArr, trainingMode } from "./EnrollComp/dummy";
+import ScratchCardComponent from "../LandingPage/ScratchCard";
 
 export const Enroll_form = () => {
-  const [open, setOpen] = useState();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const {
@@ -36,17 +28,10 @@ export const Enroll_form = () => {
   return (
     <div className="mt-16">
       {/* heading  */}
-      <DynamicModal
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onOpenChange={onOpenChange}
-      />
+      <DynamicModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
       <Enroll_heading />
       {/* form  */}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="border-gray-400 mt-10 pb-10 rounded-md border-1 my-4 large:mx-28 medium:mx-22 small:mx-18 base:mx-2 relative flex flex-col items-center justify-center">
         {/* heading  */}
         <div className="large:text-[23px] medium:text-[20px] small:text-[18px] base:text-[16px] tracking-[1px] flex gap-2 absolute -top-4 bg-white w-fit large:mx-20 medium:mx-15 small:mx-8 base:mx-2 justify-center large:px-20 medium:px-15 small:px-8 base:px-2">
           <p>
@@ -65,9 +50,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Candidate name is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <InpBx onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx onChange={onChange} value={value} />}
             />
             {/* <p>error hai is field mein</p> */}
             <ErrMsg err={errors} name="cd_name" />
@@ -82,9 +65,7 @@ export const Enroll_form = () => {
                 required: "phone number is required",
               }}
               type="number"
-              render={({ field: { onChange, value } }) => (
-                <InpBx type="number" onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx type="number" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="phone_number" />
           </div>
@@ -98,9 +79,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "email is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <InpBx type="email" onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx type="email" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="email" />
           </div>
@@ -113,14 +92,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Category name is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={category}
-                  placeholder="Select the category"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={category} placeholder="Select the category" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="category" />
           </div>
@@ -133,9 +105,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Company is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <InpBx onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="company" />
           </div>
@@ -147,9 +117,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "City Name is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <InpBx onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="cityname" />
           </div>
@@ -162,9 +130,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "State is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <InpBx onChange={onChange} value={value} />
-              )}
+              render={({ field: { onChange, value } }) => <InpBx onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="state" />
           </div>
@@ -177,14 +143,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Training mode is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={trainingMode}
-                  placeholder="Select training mode"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={trainingMode} placeholder="Select training mode" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="training_mode" />
           </div>
@@ -197,14 +156,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Branch is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={branchArr}
-                  placeholder="Select branch"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={branchArr} placeholder="Select branch" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="branch" />
           </div>
@@ -216,14 +168,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "Branch type is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={branchType}
-                  placeholder="Select branch"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={branchType} placeholder="Select branch" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="branchtype" />
           </div>
@@ -236,14 +181,7 @@ export const Enroll_form = () => {
               rules={{
                 required: "This field is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={placementArr}
-                  placeholder="Select This field"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={placementArr} placeholder="Select This field" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="want_job_placement" />
           </div>
@@ -256,14 +194,7 @@ export const Enroll_form = () => {
                 required: "This field is required",
               }}
               name="rate_your_relationship_manager"
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={relationArr}
-                  placeholder="Select Relationship manager"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={relationArr} placeholder="Select Relationship manager" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="rate_your_relationship_manager" />
           </div>
@@ -276,50 +207,34 @@ export const Enroll_form = () => {
               rules={{
                 required: "Course type is required",
               }}
-              render={({ field: { onChange, value } }) => (
-                <SelectTag
-                  arr={courseType}
-                  placeholder="Select the course type"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              render={({ field: { onChange, value } }) => <SelectTag arr={courseType} placeholder="Select the course type" onChange={onChange} value={value} />}
             />
             <ErrMsg err={errors} name="course_type" />
           </div>
           {/*  */}
         </div>
-        <div className="flex flex-col justify-start bg-full w-full px-10">
-          <p className="text-[28px]">Declaration</p>
-          <p className="text-[14px]">
-            I Shall abide by the academic and administrative rules and
-            regulations of Delhi Institute of Digital Marketing. By filling up
-            this form, I certify that to the best of my knowledge and belief,
-            the information provided in this application form is true and
-            complete.
-          </p>
-        </div>
-        <div className="flex justify-start w-full px-10 my-5">
-          <Checkbox
-            className=""
-            radius="sm"
-            color="danger"
-            classNames={"focus : outline-none"}
-            defaultSelected
-          >
-            By clicking Agree Button, you agree to the Terms and Conditions set
-            out by this site, including our Cookie Use.
-          </Checkbox>
-        </div>
-        {/* btn  */}
-        <div className="flex justify-start w-full px-10">
-          <Button
-            type="submit"
-            variant="bordered"
-            className="text-white bg-[#B52828] rounded-full focus:outline-none border-red-800 font-semibold"
-          >
-            Scratch Now
-          </Button>
+
+        <div className="flex p-3">
+          <div className="w-[60%]">
+            <div className="flex flex-col justify-start bg-full w-full px-10">
+              <p className="text-[28px]">Declaration</p>
+              <p className="text-[14px]">I Shall abide by the academic and administrative rules and regulations of Delhi Institute of Digital Marketing. By filling up this form, I certify that to the best of my knowledge and belief, the information provided in this application form is true and complete.</p>
+            </div>
+            <div className="flex justify-start w-full px-10 my-5">
+              <Checkbox className="" radius="sm" color="danger" classNames={"focus : outline-none"} defaultSelected>
+                By clicking Agree Button, you agree to the Terms and Conditions set out by this site, including our Cookie Use.
+              </Checkbox>
+            </div>
+            {/* btn  */}
+            <div className="flex justify-start w-full px-10">
+              <Button type="submit" variant="bordered" className="text-white bg-[#B52828] rounded-full focus:outline-none border-red-800 font-semibold">
+                Scratch Now
+              </Button>
+            </div>
+          </div>
+          <div className="border-2 w-[40%] relative overflow-hidden">
+            <ScratchCardComponent />
+          </div>
         </div>
       </form>
     </div>
