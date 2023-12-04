@@ -1,14 +1,12 @@
 "use client";
-import { QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import React from "react";
 
+const queryClient = new QueryClient();
 const RectQuery = ({ children }) => {
   return (
     <>
-      <QueryClientProvider>
-        {children}
-        {/*  */}
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </>
   );
 };
