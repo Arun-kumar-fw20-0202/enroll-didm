@@ -12,6 +12,7 @@ import ScratchCardComponent from "../LandingPage/ScratchCard";
 
 export const Enroll_form = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [formFilled, setFormFilled] = useState(false);
 
   const {
     control,
@@ -22,8 +23,6 @@ export const Enroll_form = () => {
   const onSubmit = (formdata) => {
     console.log("formdata", formdata);
   };
-
-  console.log("error", errors);
 
   return (
     <div className="mt-16">
