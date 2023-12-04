@@ -1,9 +1,11 @@
 import LaptopSidebar from "@/components/Sidebar/LaptopSidebar";
 import "@/styles/globals.css";
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }) {
   return (
-    <LaptopSidebar >
+    <LaptopSidebar>
+      <Toaster />
       <Component {...pageProps} />
     </LaptopSidebar>
   );

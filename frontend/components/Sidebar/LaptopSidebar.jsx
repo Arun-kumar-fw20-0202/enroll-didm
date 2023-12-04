@@ -1,9 +1,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import Navbar from "./Navbar";
-import { useMediaQuery } from "react-responsive";
-import MobileNavbar from "./MobileNavbar";
-import dynamic from "next/dynamic";
+import Footer from "../Footer";
 
 const LaptopSidebar = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -15,19 +13,17 @@ const LaptopSidebar = ({ children }) => {
   const pathname = usePathname();
   let noSidebar = ["/"];
   return (
-   <div>
-      {/* {isBigScreen && <p>You have a huge screen</p>}
-      {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
-      {isPortrait && <p>Your are inportrait orientation</p>} */}
+    <div>
       {noSidebar.includes(pathname) ? (
-       {children}
+        { children }
       ) : (
         <>
           {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}
           {children}
         </>
       )}
-   </div>
+      <Footer />
+    </div>
   );
 };
 

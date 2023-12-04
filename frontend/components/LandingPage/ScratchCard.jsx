@@ -1,16 +1,18 @@
+import { useDisclosure } from "@nextui-org/react";
 import { useWindowSize } from "@react-hook/window-size";
 import React, { useRef, useState } from "react";
 import ReactConfetti from "react-confetti";
 import ScratchCard from "react-scratchcard";
 
 export default function ScratchCardComponent() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const { width, height } = useWindowSize();
   const [scratchedText, setScratchedText] = useState("");
-  const confetiRef = useRef(null);
   const [numberOfPieces, setnumberOfPieces] = useState(0);
 
   const handleScratchComplete = () => {
-    setScratchedText("25%");
+    setScratchedText(`You got 25% Discount`);
     setnumberOfPieces(500);
     setTimeout(() => {
       setnumberOfPieces(0);
@@ -39,15 +41,13 @@ export default function ScratchCardComponent() {
   };
 
   return (
-    <div className="h-full w-full overflow-hidden">
-      <div className=" ">
-        <ReactConfetti width={width} height={height} numberOfPieces={numberOfPieces} config={config} />
-      </div>
+    <div className="h-full w-full overflow-hidden bg-purple-500">
+      <ReactConfetti numberOfPieces={numberOfPieces} config={config} />
       {/*  */}
-      <div className=" w-full flex justify-center items-center overflow-hidden">
+      <div className=" w-auto flex justify-center items-center overflow-hidden">
         <ScratchCard {...settings}>
-          <div className="flex items-center justify-center border border-red-500 h-[500px] text-center p-3 w-[500px]">
-            <h1 className="text-[50px] font-extrabold">You Got {scratchedText} Discount</h1>
+          <div className="flex items-center justify-center border border-red-500 h-[450px] text-center p-3 ">
+            <h1 className="text-[50px] font-extrabold">{scratchedText}</h1>
           </div>
         </ScratchCard>
       </div>
