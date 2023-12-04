@@ -15,22 +15,24 @@ const LaptopSidebar = ({ children }) => {
   const pathname = usePathname();
   let noSidebar = ["/"];
   return (
-   <div>
+    <div>
       {/* {isBigScreen && <p>You have a huge screen</p>}
       {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
       {isPortrait && <p>Your are inportrait orientation</p>} */}
       {noSidebar.includes(pathname) ? (
-       {children}
+        { children }
       ) : (
         <>
           {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}
-          {children}
+          <isDesktopOrLaptop>{children}</isDesktopOrLaptop>
         </>
       )}
-   </div>
+      {/* {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}
+      {children} */}
+    </div>
   );
 };
 
-export default LaptopSidebar;
+// export default LaptopSidebar;
 
-// export default dynamic(() => Promise.resolve(LaptopSidebar), { ssr: false });
+export default dynamic(() => Promise.resolve(LaptopSidebar), { ssr: false });
