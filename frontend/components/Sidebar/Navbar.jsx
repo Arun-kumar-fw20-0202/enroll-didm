@@ -27,12 +27,12 @@ let navLink2 = [
   {
     name: "info@didm.in",
     // link: "/blogs",
-    // icon: MdOutlinePhone,
+    icon: MdOutlinePhone,
   },
   {
     name: "+91 8800505151",
     // link: "/news_events",
-    // icon: MdOutlineMailOutline,
+    icon: MdOutlineMailOutline,
   },
 ];
 
@@ -72,7 +72,7 @@ const Navbar = () => {
           {/* one  */}
           <div className="flex gap-8 items-center h-full">
             {navLink1.map((el, i) => (
-              <div>
+              <div key={i}>
                 <p className="text-white text-[15px]">{el.name}</p>
               </div>
             ))}
@@ -80,8 +80,8 @@ const Navbar = () => {
           {/* two  */}
           <div className="flex gap-8 items-center h-full">
             {navLink2.map((el, i) => (
-              <div className="flex gap-2 items-center">
-                {/* {<el.icon className="text-white" />} */}
+              <div key={i} className="flex gap-2 items-center">
+                {<el.icon className="text-white" />}
                 <p className="text-white text-[15px]">{el.name}</p>
               </div>
             ))}
