@@ -31,8 +31,6 @@ export const Enroll_form = () => {
     console.log("formdata", formdata);
   };
 
-  console.log("error", errors);
-
   return (
     <div className="mt-16">
       {/* heading  */}
