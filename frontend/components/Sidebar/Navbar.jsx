@@ -110,7 +110,9 @@ const Navbar = () => {
           <div className="flex h-full items-center gap-8">
             {navLink3.map((el, i) => (
               <div key={i}>
-                <p className="hover:text-red-800 transition-all duration-300 cursor-pointer">{el.name}</p>
+                <p className="hover:text-red-800 transition-all duration-300 cursor-pointer">
+                  {el.name}
+                </p>
               </div>
             ))}
           </div>
