@@ -33,6 +33,10 @@ const enrollForm = mongoose.Schema(
     course_type: { type: String, required: [true, "course type is required"] },
     agree: { type: String, required: [true, "agree field is required"] },
     discount: { type: String, required: false },
+    paymentStatus: { type: Boolean, default: false },
+    paymentId: {
+      type: String,
+    },
   },
   {
     versionKey: false,

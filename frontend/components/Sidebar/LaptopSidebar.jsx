@@ -14,7 +14,7 @@ const LaptopSidebar = ({ children }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const pathname = usePathname();
-  let noSidebar = ["/"];
+  let noSidebar = ["/", "/test"];
   return (
     <div>
       {noSidebar.includes(pathname) ? (
@@ -23,9 +23,9 @@ const LaptopSidebar = ({ children }) => {
         <>
           {isDesktopOrLaptop ? <Navbar /> : <MobileNavbar />}
           <isDesktopOrLaptop>{children}</isDesktopOrLaptop>
+          <Footer />
         </>
       )}
-      <Footer />
       {/* {children} */}
     </div>
   );

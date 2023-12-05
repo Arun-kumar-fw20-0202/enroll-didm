@@ -11,7 +11,7 @@ const JoinMaster = () => {
         <div>
           <h3 className="medium:text-3xl base:text-[18px] font-bold mt-4 ">Exclusive Limited-Time Discount Enrollment!</h3>
           <h1 className="medium:text-6xl base:text-[20px] font-extrabold mt-4">
-            JOIN MASTER'S COURSE NOW AND GET UP TO <br /> 30% OFF!
+            {"JOIN MASTER'S"} COURSE NOW AND GET UP TO <br /> 30% OFF!
           </h1>
           <p className=" medium:text-xl base:text-md mt-4">Rated 4.9/5.0 (4500+ Reviews)</p>
           <p className=" medium:text-lg base:text-md mt-4">Certified Professional Trainers | Work on 5+ Live Projects | 100% Placement Assistance | Agency Style Learning | Guaranteed Paid Internship | 50+ Modules | 20+ Globlized Certifications</p>
