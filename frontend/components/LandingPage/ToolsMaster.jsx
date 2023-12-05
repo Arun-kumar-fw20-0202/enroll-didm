@@ -1,4 +1,5 @@
 // components/ToolsMastery.js
+import Image from "next/image";
 import React from "react";
 
 const ToolsMastery = () => {
@@ -27,7 +28,7 @@ const ToolsMastery = () => {
         <div className="grid mt-8 medium:grid-cols-5 base:grid-cols-3 gap-6">
           {logos.map((logo, index) => (
             <div key={index} className="flex justify-center items-center">
-              <img src={logo} alt={`Logo ${index + 1}`} className="max-w-full h-auto" />
+              <Image height={100} width={100} src={logo} alt={`Logo ${index + 1}`} className="max-w-full h-auto" />
             </div>
           ))}
         </div>

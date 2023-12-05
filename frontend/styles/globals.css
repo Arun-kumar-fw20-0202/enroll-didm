@@ -33,3 +33,38 @@
   width: 100%;
   height: auto;
 }
+
+/* styles/ScratchCard.module.css */
+
+/*  */
+
+.scratch-box {
+  width: auto;
+  height: 200px;
+  /* border: 2px solid #000; */
+  background: url(/landing/banenr.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+  color: #fff;
+}
+
+.scratched {
+  background: #b52828;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  /* border: 2px dashed #000; */
+}
+
+.scratched > h1 {
+  color: #fff;
+  font-weight: 800;
+}

@@ -1,29 +1,27 @@
-import generateDiscount from "@/core/GenerateDiscount";
-import { useDisclosure } from "@nextui-org/react";
 import { useWindowSize } from "@react-hook/window-size";
 import React, { useRef, useState } from "react";
 import ReactConfetti from "react-confetti";
 import ScratchCard from "react-scratchcard";
 
-export default function ScratchCardComponent() {
+export default function ScratchCardComponent({ discount }) {
   const { width, height } = useWindowSize();
 
   const [scratchedText, setScratchedText] = useState("");
   const [numberOfPieces, setnumberOfPieces] = useState(0);
 
   const handleScratchComplete = () => {
-    setScratchedText(`You got ${generateDiscount()}% Discount`);
+    setScratchedText(`You got ${discount}% Discount`);
     setnumberOfPieces(500);
     setTimeout(() => {
       setnumberOfPieces(0);
-    }, 1000);
+    }, 3000);
   };
 
   const settings = {
-    width: 500,
-    height: 250, // Set the height to 100% to make it dynamic
+    width: 350,
+    height: 350, // Set the height to 100% to make it dynamic
     image: "/landing/banenr.jpg",
-    finishPercent: 50,
+    finishPercent: 30,
     onComplete: handleScratchComplete,
   };
   const config = {
@@ -43,12 +41,12 @@ export default function ScratchCardComponent() {
   return (
     <>
       <ReactConfetti numberOfPieces={numberOfPieces} config={config} />
-      <div className="relative h-full w-full overflow-hidden">
-        <div className="w-full h-full text-center border rounded-md border-gray-500">
-          <ScratchCard className="border boder-black" {...settings}>
-            <div>
-              <h1 className="text-[50px] font-extrabold">{scratchedText}</h1>
-            </div>
+      <div className="relative h-full responsive w-full overflow-hidden border ">
+        <div className="w-full h-full flex justify-center items-center border rounded-md border-red-500">
+          <ScratchCard {...settings}>
+            {/* <h1 className="large:text-[50px] medium:text-[35px] base:text-[30px] small:text-[25px] font-extrabold"> */}
+            {scratchedText}
+            {/* </h1> */}
           </ScratchCard>
         </div>
       </div>

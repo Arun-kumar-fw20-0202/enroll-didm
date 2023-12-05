@@ -1,31 +1,18 @@
-import React, { useRef } from "react";
-import ScratchCard from "react-scratchcard-v2";
+import React, { useState } from "react";
+// import "./ScratchBox.css"; // Create a CSS file for styling
 
-import IMG from "/landing/banenr.jpg";
+const ScratchBox = ({ discount }) => {
+  const [isScratched, setScratched] = useState(false);
 
-export const ScratchCard1 = () => {
-  const ref = useRef < ScratchCard > null;
-
-  const onClickReset = () => {
-    ref.current && ref.current.reset();
+  const handleScratch = () => {
+    setScratched(true);
   };
 
   return (
-    <div>
-      <button onClick={onClickReset}>Reset</button>
-      <ScratchCard width={320} height={226} image={IMG} finishPercent={80} onComplete={() => console.log("complete")}>
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            height: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <h1>Scratch card</h1>
-        </div>
-      </ScratchCard>
+    <div className={`scratch-box ${isScratched ? "scratched" : ""}`} onClick={handleScratch}>
+      <h1 className="text-2xl">{isScratched ? `You Got ${discount}%` : "Scratch Here"}</h1>
     </div>
   );
 };
+
+export default ScratchBox;

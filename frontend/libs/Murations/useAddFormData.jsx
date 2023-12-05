@@ -6,17 +6,17 @@ const useAddFormData = () => {
   const queryClient = useQueryClient();
   const addExpensive = useMutation({
     mutationFn: async (data) => {
-      console.log(data);
       const res = await api.post("enroll/create", data);
-      return res;
+      return res?.data;
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries("admission");
-      toast.success("Data created");
+      toast.success(data?.message);
     },
-    onError: () => {
-      setWait(false);
-      toast.error("Something Went Wrong");
+    onError: (err) => {
+      //   toast.error(err?.response?.data?.message);
+      toast.error(err?.response?.data?.message && "Your have alredy filled the form");
+      return err;
     },
   });
   return addExpensive;
