@@ -38,7 +38,7 @@ const TrainingBox = () => {
           <h1 className="base:text-[26px] medium:text-3xl font-bold">Training Specification</h1>
           <div className="grid medium:grid-cols-2 base:grid-cols-1">
             {trainingData?.map((ele, i) => (
-              <div className="mt-4 flex items-center gap-3">
+              <div key={i} className="mt-4 flex items-center gap-3">
                 <div>
                   <MdFace />
                 </div>

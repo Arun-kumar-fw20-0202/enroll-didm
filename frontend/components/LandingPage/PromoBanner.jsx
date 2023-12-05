@@ -1,6 +1,7 @@
 // components/PromoBanner.js
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const PromoBanner = () => {
@@ -21,7 +22,9 @@ const PromoBanner = () => {
         />
       </div>
       {/* <Button color="blue">GRAB IT FAST</Button> */}
-      <Button className="bg-[#ee3131] text-white p-3 shadow-md rounded-md">GRAB IT FAST</Button>
+      <Link href={"/enroll_course"}>
+        <Button className="bg-[#ee3131] px-10 text-white p-6 shadow-md rounded-md">GRAB IT FAST</Button>
+      </Link>
     </div>
   );
 };

@@ -109,19 +109,14 @@ const Navbar = () => {
         <div className="flex gap-8">
           <div className="flex h-full items-center gap-8">
             {navLink3.map((el, i) => (
-              <div>
-                <p className="hover:text-red-800 transition-all duration-300 cursor-pointer">
-                  {el.name}
-                </p>
+              <div key={i}>
+                <p className="hover:text-red-800 transition-all duration-300 cursor-pointer">{el.name}</p>
               </div>
             ))}
           </div>
           {/* three  */}
           <div className="h-full flex items-center">
-            <Button
-              variant="bordered"
-              className="text-red-600 focus:outline-none border-red-800 font-semibold"
-            >
+            <Button variant="bordered" className="text-red-600 focus:outline-none border-red-800 font-semibold">
               <MdOutlinePhone /> Request Callback
             </Button>
           </div>
