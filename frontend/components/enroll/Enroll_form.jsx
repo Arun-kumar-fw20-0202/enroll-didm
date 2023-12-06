@@ -83,88 +83,88 @@ export const Enroll_form = () => {
 
   const makePayment = async () => {
     setScratched(true);
-    // setScratched(true);
-    // let status;
-    // // console.log(amount);
-    // if (!courseFee) {
-    //   return toast("Access Denied", {
-    //     icon: "⚠️",
-    //   });
-    // } else {
-    //   const sendObj = {
-    //     userId: data?.data?._id,
-    //   };
-    //   try {
-    //     const checkPaymentStatus = await axios.post("http://localhost:8080/checkpayment", sendObj);
-    //     console.log("response after check payment", checkPaymentStatus.data.status);
-    //     status = true;
-    //   } catch (error) {
-    //     console.log("errrr", error.response);
-    //     console.log("err", error?.response?.data?.status);
-    //     status = false;
-    //     toast.error(error?.response?.data?.message);
-    //   }
-    //   if (status) {
-    //     const res = await initializeRazorpay();
+    setScratched(true);
+    let status;
+    // console.log(amount);
+    if (!courseFee) {
+      return toast("Access Denied", {
+        icon: "⚠️",
+      });
+    } else {
+      const sendObj = {
+        userId: data?.data?._id,
+      };
+      try {
+        const checkPaymentStatus = await axios.post("http://localhost:8080/checkpayment", sendObj);
+        console.log("response after check payment", checkPaymentStatus.data.status);
+        status = true;
+      } catch (error) {
+        console.log("errrr", error.response);
+        console.log("err", error?.response?.data?.status);
+        status = false;
+        toast.error(error?.response?.data?.message);
+      }
+      if (status) {
+        const res = await initializeRazorpay();
 
-    //     if (!res) {
-    //       alert("Razorpay SDK Failed to load");
-    //       return;
-    //     }
-    //     try {
-    //       let obj = {
-    //         userId: data?.data?._id,
-    //       };
-    //       const datapay = await fetch("http://localhost:8080/order", {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(obj),
-    //       })
-    //         .then((t) => t.json())
-    //         .catch((err) => toast.error(err?.response?.data?.message));
-    //       var options = {
-    //         key: "rzp_test_thhLCCjTJvKt4l",
-    //         name: "DIDM",
-    //         currency: currency,
-    //         amount: amount,
-    //         order_id: datapay.id,
-    //         description: "Payment",
-    //         image: "https://i.ibb.co/Y0GR2SN/didmfavicon.png",
-    //         handler: async function (response) {
-    //           let obj = {
-    //             userId: data?.data?._id,
-    //             paid_amount: amount,
-    //             course_amount: courseFee,
-    //             paymentId: response.razorpay_payment_id,
-    //           };
+        if (!res) {
+          alert("Razorpay SDK Failed to load");
+          return;
+        }
+        try {
+          let obj = {
+            userId: data?.data?._id,
+          };
+          const datapay = await fetch("http://localhost:8080/order", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj),
+          })
+            .then((t) => t.json())
+            .catch((err) => toast.error(err?.response?.data?.message));
+          var options = {
+            key: "rzp_test_thhLCCjTJvKt4l",
+            name: "DIDM",
+            currency: currency,
+            amount: amount,
+            order_id: datapay.id,
+            description: "Payment",
+            image: "https://i.ibb.co/Y0GR2SN/didmfavicon.png",
+            handler: async function (response) {
+              let obj = {
+                userId: data?.data?._id,
+                paid_amount: amount,
+                course_amount: courseFee,
+                paymentId: response.razorpay_payment_id,
+              };
 
-    //           console.log("user id in forntend", data?.data?._id);
-    //           console.log("response from callback", response);
-    //           try {
-    //             const res = await axios.post("http://localhost:8080/payment", obj);
-    //             const resData = await res.data;
-    //             toast.success(resData?.message);
-    //             router.replace("/");
-    //           } catch (error) {
-    //             toast.error(err?.response?.data?.message);
-    //           }
-    //         },
-    //         prefill: {
-    //           name: "DIDM",
-    //           email: "info@didm.in",
-    //           contact: "8800505151",
-    //         },
-    //       };
+              console.log("user id in forntend", data?.data?._id);
+              console.log("response from callback", response);
+              try {
+                const res = await axios.post("http://localhost:8080/payment", obj);
+                const resData = await res.data;
+                toast.success(resData?.message);
+                router.replace("/");
+              } catch (error) {
+                toast.error(err?.response?.data?.message);
+              }
+            },
+            prefill: {
+              name: "DIDM",
+              email: "info@didm.in",
+              contact: "8800505151",
+            },
+          };
 
-    //       const paymentObject = new window.Razorpay(options);
-    //       paymentObject.open();
-    //     } catch (error) {
-    //       return toast.error(error?.response?.data?.message);
-    //     }
-    //   }
-    // }
+          const paymentObject = new window.Razorpay(options);
+          paymentObject.open();
+        } catch (error) {
+          return toast.error(error?.response?.data?.message);
+        }
+      }
+    }
   };
 
   return (
