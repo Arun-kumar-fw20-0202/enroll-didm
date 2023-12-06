@@ -7,12 +7,12 @@ const enrollForm = new mongoose.Schema(
     phone_number: {
       type: String,
       required: [true, "phone number is required"],
-      unique: true,
+      // unique: true,
     },
     email: {
       type: String,
       required: [true, "email is required"],
-      unique: true,
+      // unique: true,
     },
 
     category: { type: String, required: [true, "category is required"] },
@@ -39,7 +39,7 @@ const enrollForm = new mongoose.Schema(
     },
     course_amount: {
       type: String,
-    },  
+    },
     paymentId: {
       type: String,
     },

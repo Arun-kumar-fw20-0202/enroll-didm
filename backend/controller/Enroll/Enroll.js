@@ -4,8 +4,10 @@ const { enrollModal } = require("../../modal/Enroll/EnrollForm.modal");
 const enrollForm = async (req, res) => {
   const discount = generateDiscount();
   const payload = { ...req.body, discount: discount };
+  console.log(payload);
   try {
     const find = await enrollModal.findOne({ $or: [{ phone_number: payload.phone_number }, { email: payload.email }] });
+    console.log(find);
     if (find) {
       //
       const data = await enrollModal.findByIdAndUpdate({ _id: find._id }, { ...payload, discount: find?.discount }, { new: true });
