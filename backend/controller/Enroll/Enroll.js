@@ -3,8 +3,8 @@ const { enrollModal } = require("../../modal/Enroll/EnrollForm.modal");
 
 const enrollForm = async (req, res) => {
   const discount = generateDiscount();
-  const payload = { ...req.body, discount: discount };
-  console.log(payload);
+  const course_amount = 48490;
+  const payload = { ...req.body, discount: discount,course_amount };
   try {
     const find = await enrollModal.findOne({ $or: [{ phone_number: payload.phone_number }, { email: payload.email }] });
     console.log(find);

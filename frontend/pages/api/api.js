@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const baseURL = "http://localhost:8080/api";
 export const clientUrl = "http://localhost:3000/";
+export const backend = "http://localhost:8080/"
 
 export const Imageapi = axios.create({
   withCredentials: true,
