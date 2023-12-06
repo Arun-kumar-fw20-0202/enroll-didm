@@ -7,51 +7,9 @@ import useDeleteExpHead from "@/libs/Murations/useDeleteFormData";
 
 const Index = () => {
   const [filData, setFilData] = useState(null);
-  const [expData, setExpData] = useState("");
 
   const { data: data, isLoading: loading } = useGetFormData();
   const { mutate: deleteData } = useDeleteExpHead();
-
-  const columns = [
-    {
-      name: "Name",
-      selector: (row) => row.cd_name,
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: (row) => row.email,
-      sortable: true,
-    },
-    ,
-    {
-      name: "Category",
-      selector: (row) => row.category,
-      sortable: true,
-    },
-    ,
-    {
-      name: "Phone Number",
-      selector: (row) => row.phone_number,
-      sortable: true,
-    },
-    ,
-    {
-      name: "Company",
-      selector: (row) => row.company,
-      sortable: true,
-    },
-    {
-      name: "Action",
-      selector: (row) => (
-        <div className="flex gap-3">
-          <button className="bg-red-500 p-1 text-white" onClick={() => handleDelete(row._id)}>
-            <AiOutlineDelete />
-          </button>
-        </div>
-      ),
-    },
-  ];
 
   const handleDelete = (id) => {
     deleteData(id);
