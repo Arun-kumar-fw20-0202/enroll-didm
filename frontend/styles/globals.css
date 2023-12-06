@@ -42,7 +42,9 @@
   width: auto;
   height: 200px;
   /* border: 2px solid #000; */
-  background: url(/landing/banenr.jpg);
+  overflow: hidden;
+  /* background: url(/landing/banenr.jpg); */
+  background: #b52828;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -53,6 +55,17 @@
   cursor: pointer;
   user-select: none;
   color: #fff;
+  /* transition: 0.8s ease; */
+}
+
+.scratch-box > img {
+  /* border: 2px solid black; */
+  transition: 1s ease;
+}
+
+.scratch-box > img.active {
+  /* border: 5px solid blue; */
+  transform: translateY(-100%);
 }
 
 .scratched {
@@ -61,6 +74,7 @@
   align-items: center;
   justify-self: center;
   text-align: center;
+  transition: 0.8s ease-in-out;
   /* border: 2px dashed #000; */
 }
 

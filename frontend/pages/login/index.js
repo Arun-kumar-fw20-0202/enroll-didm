@@ -78,19 +78,3 @@ const Login = () => {
 };
 
 export default Login;
-
-export const getServerSideProps = async ({ req, res }) => {
-  let cookieStore = req.cookies.auth_token;
-  // console.log("cookie =>",cookieStore)
-  if (!cookieStore) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {},
-  };
-};

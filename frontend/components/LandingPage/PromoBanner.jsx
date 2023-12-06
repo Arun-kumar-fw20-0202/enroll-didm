@@ -23,7 +23,7 @@ const PromoBanner = () => {
       </div>
       {/* <Button color="blue">GRAB IT FAST</Button> */}
       <Link href={"/enroll_course"}>
-        <Button className="bg-[#ee3131] px-10 text-white p-6 shadow-md rounded-md">GRAB IT FAST</Button>
+        <Button className="bg-[#ee3131] medium:text-[30px] base:text-[20px] medium:py-[30px] medium:px-[80px] base:py-[20px] base:px-[50px] text-white shadow-md rounded-md">GRAB IT FAST</Button>
       </Link>
     </div>
   );

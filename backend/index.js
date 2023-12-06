@@ -10,7 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
 const { enrollModal } = require("./modal/Enroll/EnrollForm.modal");
+const cookieParser = require("cookie-parser");
 // app.use(cors());
+
+app.use(cookieParser());
 
 const corsOptions = {
   origin: ["http://localhost:3000"],
@@ -31,9 +34,7 @@ app.post("/checkpayment", async (req, res) => {
     const { userId } = req.body;
     const preObjFinder = await enrollModal.findOne({ _id: userId });
     if (preObjFinder.paymentStatus) {
-      return res
-        .status(400)
-        .send({ message: "You already purchased the course", status: false });
+      return res.status(400).send({ message: "You already purchased the course", status: false });
     }
     return res.status(200).send({ message: "go ahead", status: true });
   } catch (error) {
@@ -68,9 +69,7 @@ app.post("/payment", async (req, res) => {
     const { userId, paid_amount, course_amount, paymentId } = req.body;
     const preObjFinder = await enrollModal.findOne({ _id: userId });
     if (preObjFinder.paymentStatus) {
-      return res
-        .status(400)
-        .send({ message: "You already purchased the course" });
+      return res.status(400).send({ message: "You already purchased the course" });
     }
     const updateEnroll = await enrollModal.findByIdAndUpdate(
       { _id: userId },
@@ -84,9 +83,7 @@ app.post("/payment", async (req, res) => {
         new: true,
       }
     );
-    res
-      .status(200)
-      .send({ message: "Payment done successfully", data: updateEnroll });
+    res.status(200).send({ message: "Payment done successfully", data: updateEnroll });
   } catch (error) {
     return res.status(400).send({ message: error.message, status: false });
   }

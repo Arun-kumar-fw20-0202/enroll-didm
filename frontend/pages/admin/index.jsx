@@ -173,4 +173,20 @@ const Index = () => {
   );
 };
 
+//private route func
+export const getServerSideProps = async ({ req, res }) => {
+  let cookieStore = req?.cookies?.auth_token;
+  if (!cookieStore) {
+    return {
+      redirect: {
+        destination: "/login",
+        parmanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+};
+
 export default Index;

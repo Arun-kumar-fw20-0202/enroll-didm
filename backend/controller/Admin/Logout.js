@@ -1,8 +1,16 @@
+//
+//
+//
+//
+//
+
 const userLogoutController = async (req, res) => {
   try {
+    // console.dir(req, "token");
+    console.log(req.cookies);
+
     if (req.cookies.auth_token) {
-      console.log(req.cookies.auth_token, "token");
-      //   res.clearCookie("auth_token");
+      res.clearCookie("auth_token");
       res.status(200).send({ message: "Logout successfully", status: true });
     } else {
       res.send("No cookie found. You are already logged out.");
@@ -12,4 +20,4 @@ const userLogoutController = async (req, res) => {
   }
 };
 
-module.exports = userLogoutController;
+module.exports = { userLogoutController };
