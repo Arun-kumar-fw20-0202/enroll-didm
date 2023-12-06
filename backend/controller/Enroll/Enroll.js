@@ -36,5 +36,30 @@ const updateForm = async (req, res) => {
     res.send({ status: false, message: err.message }).status(500);
   }
 };
+const getFormData = async (req, res) => {
+  const { page, limit = 1 } = req.query;
+  try {
+    // Perform the find operation with filtering and pagination
+    const total = await enrollModal.find();
+    const data = await enrollModal.find();
+    // .skip((page - 1) * limit)
+    // .limit(parseInt(limit));
 
-module.exports = { enrollForm, updateForm };
+    res.send({ message: "Data Fetched", status: true, data: data, total: total.length });
+  } catch (err) {
+    res.send({ message: err.message, status: false });
+  }
+};
+
+const deleteData = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await enrollModal.findByIdAndDelete(id);
+    res.send({ message: "Data Deleted", status: true });
+  } catch (err) {
+    res.send({ message: err.message, status: false });
+  }
+};
+
+module.exports = { enrollForm, updateForm, getFormData, deleteData };
