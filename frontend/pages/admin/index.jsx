@@ -11,7 +11,6 @@ import useLogout from "@/libs/Murations/admin/useLogout";
 
 const Index = () => {
   const [filData, setFilData] = useState(null);
-  const [expData, setExpData] = useState("");
 
   const { data: data, isLoading: loading } = useGetFormData();
   const { mutate: deleteData } = useDeleteExpHead();
