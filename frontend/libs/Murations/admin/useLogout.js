@@ -14,7 +14,7 @@ const useLogout = () => {
     onSuccess: (data) => {
       console.log("data in", data);
       toast.success("Logout success");
-      router.replace("/");
+      router.replace("/login");
     },
     onError: (err) => {
       console.log("err", err?.response?.data?.message);
