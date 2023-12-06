@@ -30,12 +30,24 @@ app.post("/checkpayment", async (req, res) => {
   try {
     const { userId } = req.body;
     const preObjFinder = await enrollModal.findOne({ _id: userId });
+    console.log("check=>", preObjFinder);
     if (preObjFinder.paymentStatus) {
       return res
         .status(400)
         .send({ message: "You already purchased the course", status: false });
     }
-    return res.status(200).send({ message: "go ahead", status: true });
+
+    let courseFee = Number(preObjFinder?.course_amount);
+    let discount = Number(preObjFinder?.discount);
+    let discountAmount = (courseFee * discount) / 100;
+    let paidAmount = courseFee - discountAmount;
+    let amount = Math.ceil(paidAmount * 100);
+    return res.status(200).send({
+      message: "go ahead",
+      status: true,
+      courseFee: preObjFinder.course_amount,
+      amountFee: amount,
+    });
   } catch (error) {
     return res.status(400).send({ message: error.message, status: false });
   }
