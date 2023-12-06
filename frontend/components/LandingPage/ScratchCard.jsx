@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import ReactConfetti from "react-confetti";
 import ScratchCard from "react-scratchcard";
 
-export default function ScratchCardComponent({ discount }) {
+export default function   ScratchCardComponent() {
   const { width, height } = useWindowSize();
 
   const [scratchedText, setScratchedText] = useState("");
